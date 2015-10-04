@@ -22,12 +22,29 @@
     </div>
     <%= error_span(@user[:login]) %>
   </div>
+
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:email]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :password, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:password]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :password_confirmation, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:password_confirmation]) %>
   </div>
 
 
