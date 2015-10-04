@@ -3,9 +3,9 @@ require "rails_helper"
 describe User do
   context 'New User' do
 
-    it 'must have a name(login)' do
+    it 'must have a name and a passowrd(login) ' do
       user = User.create(login: '')
-      expect(user.errors.count).to eq(1)
+      expect(user.errors.count).to eq(2)
     end
 
     it 'email has to be uniq' do
