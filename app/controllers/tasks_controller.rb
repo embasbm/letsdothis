@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks.where(completed: false).order(created_at: :desc)
+    if logged_in?
+      @tasks = current_user.tasks.where(completed: false).order(created_at: :desc)
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /tasks/1
