@@ -14,6 +14,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th><%= model_class.human_attribute_name(:name) %></th>
         <th><%= model_class.human_attribute_name(:description) %></th>
         <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -22,7 +23,8 @@
     </thead>
     <tbody>
       <% @tasks.each do |task| %>
-        <tr>
+        <tr data-update-path="<%= complete_task_path(task.id) %>">
+          <td><input type="checkbox" class="done-checkbox" ></td>
           <td><%= task.name %></td>
           <td><%= task.description %></td>
           <td><%=l(task.created_at, format: :long) %></td>
