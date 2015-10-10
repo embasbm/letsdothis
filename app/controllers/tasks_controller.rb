@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete]
 
   # GET /tasks
   # GET /tasks.json
@@ -65,10 +65,12 @@ class TasksController < ApplicationController
   end
 
   def complete
-    task = Task.find(params[:id])
-    task.update_attributes(completed: true) if params[:status] == 'completed' && task
     respond_to do |format|
-      format.html { redirect_to tasks_path}
+      if params[:status] == 'completed' && @task
+        if @task.update_attributes(completed: true)
+          format.json { render :index, status: :ok, location: @task }
+        end
+      end
     end
   end
 
