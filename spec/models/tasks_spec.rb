@@ -15,7 +15,7 @@ describe Task do
 
     it 'initial status is not completed' do
       task = Task.create(name: 'foo')
-      expect(task.status).to eq('uncomplete')
+      expect(task.completed).to eq(false)
     end
   end
 end

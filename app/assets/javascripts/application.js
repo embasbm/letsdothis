@@ -15,3 +15,22 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $('input.done-checkbox').click(function() {
+    var $tr, action, taskId, ticked;
+    $tr = $(this).parents('tr');
+    taskPath = $tr.data('updatePath');
+    ticked = $(this).is(':checked');
+    action = ticked ? 'completed' : '';
+    $.ajax({
+      url: taskPath,
+      type: 'POST',
+      data: {
+        _method: 'PUT',
+        status: action
+      },
+      success: function() { location.reload(); }
+    });
+  });
+});
